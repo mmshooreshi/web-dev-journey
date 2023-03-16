@@ -1,1 +1,90 @@
-[]
+{
+  "tasks": [
+    {
+      "name": "Learn HTML Basics",
+      "done": false,
+      "subtasks": [
+        {
+          "name": "Learn HTML Semantics",
+          "done": false,
+          "subtasks": [
+            {
+              "name": "Learn HTML Forms and Inputs",
+              "done": false,
+              "subtasks": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Learn CSS",
+      "done": false,
+      "subtasks": [
+        {
+          "name": "Learn CSS Basics",
+          "done": false,
+          "subtasks": [
+            {
+              "name": "Learn CSS Layout",
+              "done": false,
+              "subtasks": [
+                {
+                  "name": "Learn CSS Advanced Topics",
+                  "done": false,
+                  "subtasks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Learn JS",
+      "done": false,
+      "subtasks": [
+        {
+          "name": "Learn JS Basics",
+          "done": false,
+          "subtasks": [
+            {
+              "name": "Learn JS Advanced Topics",
+              "done": false,
+              "subtasks": [
+                {
+                  "name": "Learn JS Libraries",
+                  "done": false,
+                  "subtasks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Use Vercel to Deploy Our First Web",
+      "done": false,
+      "subtasks": [
+        {
+          "name": "Set Up Vercel And Connect To A Repository",
+          "done": false,
+          "subtasks": [
+            {
+              "name": "Create A Web App With HTML, CSS, And JS",
+              "done": false,
+              "subtasks": [
+                {
+                  "name": "Deploy The Web App",
+                  "done": false,
+                  "subtasks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
