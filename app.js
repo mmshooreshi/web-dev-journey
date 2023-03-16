@@ -61,10 +61,10 @@ function addTask() {
 	taskList.push(newTask);
 
 	// store updated task list in tasks.json using GitHub API
-	fetch("https://api.github.com/repos/mmshooreshi/web-dev-journey/tasks.json", {
+	fetch("https://api.github.com/repos/mmshooreshi/web-dev-journey/contents/tasks.json", {
 		method: "PUT",
 		headers: {
-            "Authorization": `token ${process.env.git_api_token}`,
+            "Authorization": `token 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`,
 			"Content-Type": "application/json"
 		},
 		body: JSON.stringify({
@@ -147,11 +147,11 @@ function addTask() {
 
 function renderTaskList() {
 	// fetch task list from tasks.json using GitHub API
-	fetch("https://api.github.com/repos/mmshooreshi/web-dev-journey/tasks.json", {
+	fetch("https://api.github.com/repos/mmshooreshi/web-dev-journey/contents/tasks.json", {
 		method: "GET",
 		headers: {
             "Content-Type": "application/json",
-            "Authorization": `token ${process.env.git_api_token}`
+            "Authorization": `token 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`
 		}
 	})
 	.then(response => response.json())
