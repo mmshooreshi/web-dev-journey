@@ -61,7 +61,7 @@ function addTask() {
 	taskList.push(newTask);
 
 	// store updated task list in tasks.json using GitHub API
-	fetch("https://api.github.com/repos/mmshooreshi/web-dev-journey/contents/tasks.json", {
+	fetch("https://api.github.com/repos/mmshooreshi/web-dev-journey/tasks.json", {
 		method: "PUT",
 		headers: {
             "Authorization": `token ${process.env.git_api_token}`,
@@ -147,7 +147,7 @@ function addTask() {
 
 function renderTaskList() {
 	// fetch task list from tasks.json using GitHub API
-	fetch("https://api.github.com/repos/<username>/<repository>/contents/tasks.json", {
+	fetch("https://api.github.com/repos/mmshooreshi/web-dev-journey/tasks.json", {
 		method: "GET",
 		headers: {
             "Content-Type": "application/json",
