@@ -17,6 +17,7 @@ function saveTasksToLocalStorage() {
 
 // initialize task list from local storage
 let taskList = getTasksFromLocalStorage();
+
 console.log(taskList)
 if(taskList==[]){
     console.log("yes")
