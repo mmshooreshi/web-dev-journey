@@ -19,84 +19,158 @@ function createNewTask(taskName) {
 	};
 }
 
-// function to add a task to the task list
-function addTask() {
-	// get task name from input field
-	const taskName = taskInput.value.trim();
+// // function to add a task to the task list
+// function addTask() {
+// 	// get task name from input field
+// 	const taskName = taskInput.value.trim();
 	
-	if (taskName !== "") {
-		// create new task object
-		const newTask = createNewTask(taskName);
+// 	if (taskName !== "") {
+// 		// create new task object
+// 		const newTask = createNewTask(taskName);
 
-		// add new task to task list
-		taskList.push(newTask);
+// 		// add new task to task list
+// 		taskList.push(newTask);
 
-		// clear input field
-		taskInput.value = "";
+// 		// clear input field
+// 		taskInput.value = "";
 
-		// render task list
-		renderTaskList();
+// 		// render task list
+// 		renderTaskList();
+// 	}
+// }
+
+function addTask() {
+	// get task input value
+	const taskInput = document.querySelector("#taskInput");
+	const taskText = taskInput.value.trim();
+
+	// return if task input is empty
+	if (taskText === "") {
+		return;
 	}
+
+	// create new task object
+	const newTask = {
+		id: Date.now(),
+		text: taskText,
+		completed: false,
+		important: false
+	};
+
+	// add new task to task list
+	taskList.push(newTask);
+
+	// store updated task list in tasks.json using GitHub API
+	fetch("https://api.github.com/repos/mmshooreshi/web-dev-journey/contents/tasks.json", {
+		method: "PUT",
+		headers: {
+            "Authorization": `token ${process.env.git_api_token}`,
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+			message: "Add new task",
+			content: btoa(JSON.stringify(taskList)),
+			sha: "<SHA of tasks.json>"
+		})
+	})
+	.then(response => response.json())
+	.then(data => console.log(data))
+	.catch(error => console.error(error));
+
+	// clear task input
+	taskInput.value = "";
+
+	// render task list
+	renderTaskList();
 }
 
-// function to render the task list
+
+// // function to render the task list
+// function renderTaskList() {
+// 	// clear task list element
+// 	taskListElement.innerHTML = "";
+
+// 	// loop through task list array and create HTML elements for each task
+// 	taskList.forEach(function(task) {
+// 		const listItemElement = document.createElement("li");
+// 		listItemElement.classList.add("collection-item");
+
+// 		// create task name element
+// 		const taskNameElement = document.createElement("span");
+// 		taskNameElement.classList.add("task");
+// 		taskNameElement.textContent = task.name;
+
+// 		// create delete button element
+// 		const deleteButtonElement = document.createElement("button");
+// 		deleteButtonElement.classList.add("btn", "btn-delete");
+// 		deleteButtonElement.innerHTML = '<i class="material-icons">delete</i>';
+// 		deleteButtonElement.addEventListener("click", function() {
+// 			deleteTask(task.id);
+// 		});
+
+// 		// create important button element
+// 		const importantButtonElement = document.createElement("button");
+// 		importantButtonElement.classList.add("btn", "btn-important");
+// 		importantButtonElement.innerHTML = '<i class="material-icons">warning</i>';
+// 		importantButtonElement.addEventListener("click", function() {
+// 			toggleImportant(task.id);
+// 		});
+
+// 		// create completed button element
+// 		const completedButtonElement = document.createElement("button");
+// 		completedButtonElement.classList.add("btn", "btn-completed");
+// 		completedButtonElement.innerHTML = '<i class="material-icons">done</i>';
+// 		completedButtonElement.addEventListener("click", function() {
+// 			toggleCompleted(task.id);
+// 		});
+
+// 		// add task name element and buttons to list item element
+// 		listItemElement.appendChild(taskNameElement);
+// 		listItemElement.appendChild(deleteButtonElement);
+// 		listItemElement.appendChild(importantButtonElement);
+// 		listItemElement.appendChild(completedButtonElement);
+
+// 		// add completed class to list item element if task is completed
+// 		if (task.completed) {
+// 			listItemElement.classList.add("completed");
+// 		}
+
+// 		// add important class to list item element if task is important
+// 		if (task.important) {
+// 			listItemElement.classList.add("important");
+// 		}
+
+// 		// add list item element to task list element
+// 		taskListElement.appendChild(listItemElement);
+// 	});
+// }
+
 function renderTaskList() {
-	// clear task list element
-	taskListElement.innerHTML = "";
-
-	// loop through task list array and create HTML elements for each task
-	taskList.forEach(function(task) {
-		const listItemElement = document.createElement("li");
-		listItemElement.classList.add("collection-item");
-
-		// create task name element
-		const taskNameElement = document.createElement("span");
-		taskNameElement.classList.add("task");
-		taskNameElement.textContent = task.name;
-
-		// create delete button element
-		const deleteButtonElement = document.createElement("button");
-		deleteButtonElement.classList.add("btn", "btn-delete");
-		deleteButtonElement.innerHTML = '<i class="material-icons">delete</i>';
-		deleteButtonElement.addEventListener("click", function() {
-			deleteTask(task.id);
-		});
-
-		// create important button element
-		const importantButtonElement = document.createElement("button");
-		importantButtonElement.classList.add("btn", "btn-important");
-		importantButtonElement.innerHTML = '<i class="material-icons">warning</i>';
-		importantButtonElement.addEventListener("click", function() {
-			toggleImportant(task.id);
-		});
-
-		// create completed button element
-		const completedButtonElement = document.createElement("button");
-		completedButtonElement.classList.add("btn", "btn-completed");
-		completedButtonElement.innerHTML = '<i class="material-icons">done</i>';
-		completedButtonElement.addEventListener("click", function() {
-			toggleCompleted(task.id);
-		});
-
-		// add task name element and buttons to list item element
-		listItemElement.appendChild(taskNameElement);
-		listItemElement.appendChild(deleteButtonElement);
-		listItemElement.appendChild(importantButtonElement);
-		listItemElement.appendChild(completedButtonElement);
-
-		// add completed class to list item element if task is completed
-		if (task.completed) {
-			listItemElement.classList.add("completed");
+	// fetch task list from tasks.json using GitHub API
+	fetch("https://api.github.com/repos/<username>/<repository>/contents/tasks.json", {
+		method: "GET",
+		headers: {
+            "Content-Type": "application/json",
+            "Authorization": `token ${process.env.git_api_token}`
 		}
+	})
+	.then(response => response.json())
+	.then(data => {
+		// decode task list data from base64 encoding
+		const taskListData = JSON.parse(atob(data.content));
 
-		// add important class to list item element if task is important
-		if (task.important) {
-			listItemElement.classList.add("important");
-		}
+		// update taskList array with fetched data
+		taskList = taskListData;
 
-		// add list item element to task list element
-		taskListElement.appendChild(listItemElement);
-	});
+		// render task list items
+		const taskListElement = document.querySelector("#taskList");
+		taskListElement.innerHTML = "";
+		taskList.forEach(function(task) {
+			const taskItemElement = createTaskItemElement(task);
+			taskListElement.appendChild(taskItemElement);
+		});
+	})
+	.catch(error => console.error(error));
 }
 
 // function to delete a task from the task list
