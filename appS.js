@@ -94,10 +94,10 @@ function toggleImportant(taskId) {
 }
 
 // event listener for add task button
-document.querySelector("#addTaskButton").addEventListener("click", function(event) {
-	event.preventDefault();
-	addTask();
-});
+// document.querySelector("#addTaskButton").addEventListener("click", function(event) {
+// 	event.preventDefault();
+// 	addTask();
+// });
 
 // render initial task list
 renderTaskList();
