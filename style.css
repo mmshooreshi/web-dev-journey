@@ -153,3 +153,9 @@ body {
 	font-weight: bold;
   }
   
+
+  #task-list span{
+	width: 100%;
+  }
+
+
