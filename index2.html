@@ -1,40 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do List</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>To-Do List</h1>
-  </header>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+  </head>
+  <body>
+    <h1>Task Manager</h1>
 
-  <main>
-    <section id="new-task">
-      <h2>Add New Task</h2>
-      <form id="task-form">
-        <label for="task-input">Task Name:</label>
-        <input type="text" id="task-input" required>
-        <button type="submit">Add Task</button>
-      </form>
-    </section>
+    <div id="parent-template" style="display: none;">
+      <div class="parent">
+        <h2 class="parent-name"></h2>
+        <form class="add-section-form">
+          <input type="text" class="add-section-input" placeholder="Enter section name">
+          <button type="submit">Add section</button>
+        </form>
+        <div class="section-list"></div>
+        <button class="parent-delete-button">Delete parent</button>
+      </div>
+    </div>
 
-    <section id="task-list">
-      <h2>Task List</h2>
-      <ul></ul>
-    </section>
-  </main>
+    <div id="section-template" style="display: none;">
+      <div class="section">
+        <h3 class="section-name"></h3>
+        <form class="add-task-form">
+          <input type="text" class="add-task-input" placeholder="Enter task name">
+          <button type="submit">Add task</button>
+        </form>
+        <div class="task-list"></div>
+        <button class="section-delete-button">Delete section</button>
+        <button class="section-add-subsection-button">Add subsection</button>
+      </div>
+    </div>
 
-  <script src="appS.js"></script>
-<script>
-  const taskForm = document.querySelector('#task-form');
-  taskForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    addTask();
-  });
-</script>
+    <div id="task-template" style="display: none;">
+      <div class="task">
+        <label>
+          <input type="checkbox" class="task-checkbox">
+          <span class="task-name"></span>
+        </label>
+        <button class="task-delete-button">Delete task</button>
+        <button class="task-add-subtask-button">Add subtask</button>
+        <div class="task-subtasks"></div>
+      </div>
+    </div>
 
-</body>
+    <form id="task-form">
+      <input type="text" id="task-input" placeholder="Enter task name">
+      <button type="button" id="add-task-button">Add task</button>
+    </form>
+
+    <div id="task-list"></div>
+
+    <script src="your-script.js"></script>
+  </body>
 </html>
