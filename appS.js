@@ -152,16 +152,16 @@ function updateTaskStatus(task) {
   }
 }
 
-const sectionElement =
-  sectionTemplate.content.cloneNode(true).firstElementChild;
-const section = {
-  id: Date.now().toString(),
-  name: name,
-  element: sectionElement,
-  children: {},
-  parent: null,
-  isCompleted: false,
-};
+// const sectionElement =
+//   sectionTemplate.content.cloneNode(true).firstElementChild;
+// const section = {
+//   id: Date.now().toString(),
+//   name: name,
+//   element: sectionElement,
+//   children: {},
+//   parent: null,
+//   isCompleted: false,
+// };
 
 const sectionName = sectionElement.querySelector(".section-name");
 sectionName.textContent = name;
