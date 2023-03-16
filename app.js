@@ -64,7 +64,7 @@ function addTask() {
 	fetch("https://api.github.com/repos/mmshooreshi/web-dev-journey/contents/tasks.json", {
 		method: "PUT",
 		headers: {
-            "Authorization": `token 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`,
+            "Authorization": `bearer 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`,
 			"Content-Type": "application/json"
 		},
 		body: JSON.stringify({
@@ -151,7 +151,7 @@ function renderTaskList() {
 		method: "GET",
 		headers: {
             "Content-Type": "application/json",
-            "Authorization": `token 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`
+            "Authorization": `bearer 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`
 		}
 	})
 	.then(response => response.json())
