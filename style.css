@@ -54,3 +54,64 @@ a {
 a:hover {
 	color: #666;
 }
+
+
+
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: #f5f5f5;
+	color: #333;
+}
+
+.container {
+	margin-top: 40px;
+}
+
+h1 {
+	text-align: center;
+}
+
+#taskInput {
+	width: 100%;
+	padding: 10px;
+	border: none;
+	border-bottom: 1px solid #ddd;
+}
+
+.collection-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.collection-item .task {
+	flex: 1;
+}
+
+.collection-item .btn {
+	margin-left: 10px;
+}
+
+.collection-item.important {
+	border: 2px solid red;
+}
+
+.collection-item.completed {
+	text-decoration: line-through;
+	color: #999;
+}
+
+.btn-delete {
+	background-color: red;
+	color: white;
+}
+
+.btn-important {
+	background-color: yellow;
+	color: black;
+}
+
+.btn-completed {
+	background-color: green;
+	color: white;
+}
