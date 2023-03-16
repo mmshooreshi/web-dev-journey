@@ -101,3 +101,45 @@ function toggleImportant(taskId) {
 
 // render initial task list
 renderTaskList();
+
+
+function renderTaskList() {
+    const taskListElement = document.querySelector("#task-list ul");
+  
+    // clear current task list items
+    taskListElement.innerHTML = "";
+  
+    // render new task list items
+    taskList.forEach(function(task) {
+      const taskItemElement = document.createElement("li");
+      taskItemElement.setAttribute("data-task-id", task.id);
+  
+      const taskCheckboxElement = document.createElement("input");
+      taskCheckboxElement.type = "checkbox";
+      taskCheckboxElement.checked = task.completed;
+      taskCheckboxElement.addEventListener("click", function() {
+        toggleCompleted(task.id);
+      });
+      taskItemElement.appendChild(taskCheckboxElement);
+  
+      const taskTextElement = document.createElement("span");
+      taskTextElement.textContent = task.text;
+      if (task.important) {
+        taskTextElement.classList.add("important");
+      }
+      taskTextElement.addEventListener("click", function() {
+        toggleImportant(task.id);
+      });
+      taskItemElement.appendChild(taskTextElement);
+  
+      const taskDeleteElement = document.createElement("button");
+      taskDeleteElement.textContent = "Delete";
+      taskDeleteElement.addEventListener("click", function() {
+        deleteTask(task.id);
+      });
+      taskItemElement.appendChild(taskDeleteElement);
+  
+      taskListElement.appendChild(taskItemElement);
+    });
+  }
+  

@@ -28,5 +28,13 @@
   </main>
 
   <script src="appS.js"></script>
+<script>
+  const taskForm = document.querySelector('#task-form');
+  taskForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    addTask();
+  });
+</script>
+
 </body>
 </html>
