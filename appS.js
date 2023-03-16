@@ -21,7 +21,7 @@ let taskList = getTasksFromLocalStorage();
 // function to add a task to the task list
 function addTask() {
 	// create task object from input value
-	const taskInput = document.querySelector("#taskInput");
+	const taskInput = document.querySelector("#task-input");
 	const task = {
 		id: Date.now(),
 		text: taskInput.value,
