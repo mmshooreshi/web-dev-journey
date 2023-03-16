@@ -19,7 +19,9 @@ function saveTasksToLocalStorage() {
 let taskList = getTasksFromLocalStorage();
 console.log(taskList)
 if(taskList==[]){
+    console.log("yes")
     taskList==  [{"id":1678954593323,"text":"section Learn HTML","completed":false,"important":false},{"id":1678954593324,"text":"-- Learn HTML Basics","completed":false,"important":false},{"id":1678954593325,"text":"-- Learn HTML Semantics","completed":false,"important":false},{"id":1678954605430,"text":"-- Learn HTML Forms and Inputs","completed":false,"important":false},{"id":1678954609381,"text":"section Learn CSS","completed":false,"important":false},{"id":1678954618013,"text":"-- Learn CSS Basics","completed":false,"important":false},{"id":1678954624062,"text":"-- Learn CSS Layout","completed":false,"important":false},{"id":1678954631075,"text":"-- Learn CSS Advanced Topics","completed":false,"important":false},{"id":1678954637516,"text":"section Learn JS","completed":false,"important":false},{"id":1678954643386,"text":"-- Learn JS Basics","completed":false,"important":false},{"id":1678954649086,"text":"-- Learn JS Advanced Topics","completed":false,"important":false},{"id":1678954655152,"text":"-- Learn JS Libraries","completed":false,"important":false},{"id":1678954660513,"text":"section Use Vercel to Deploy Our First Web","completed":false,"important":false},{"id":1678954665438,"text":"-- Set Up Vercel And Connect To A Repository","completed":false,"important":false},{"id":1678954672501,"text":"-- Create A Web App With HTML, CSS, And JS","completed":false,"important":false},{"id":1678954675746,"text":"-- Deploy The Web App","completed":false,"important":false}]
+    saveTasksToLocalStorage();
 }
 
 // function to add a task to the task list
